@@ -11,7 +11,7 @@ class AugementedImages extends StatefulWidget {
 
 class _AugementedImagesState extends State<AugementedImages> {
   late ArCoreController arCoreController;
-  Map<int, ArCoreAugmentedImage> augmentedImagesMap = Map();
+  Map<int, ArCoreAugmentedImage> augmentedImagesMap = {};
   whenArCoreViewCreated(ArCoreController coreController) {
     arCoreController = coreController;
     arCoreController.onTrackingImage = controlOnTrackingImage;
@@ -40,7 +40,7 @@ class _AugementedImagesState extends State<AugementedImages> {
   addSphere(ArCoreAugmentedImage arCoreAugmentedImage) async {
     final ByteData textureBytes = await rootBundle.load('assets/earth.jpg');
     final material = ArCoreMaterial(
-      color: Color.fromARGB(120, 66, 134, 244),
+      color: const Color.fromARGB(120, 66, 134, 244),
       textureBytes: textureBytes.buffer.asUint8List(),
     );
     final sphere = ArCoreSphere(
